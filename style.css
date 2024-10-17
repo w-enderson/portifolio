@@ -49,6 +49,10 @@ h1, h2 {
 }
 h1 {
     font-size: 10vw;
+    transition: all .5s;
+}
+h1:hover {
+    font-size: 12vw;
 }
 h2 {
     font-size: 2rem;
@@ -56,82 +60,55 @@ h2 {
 
 hr {
     border: 1px solid #4AD6E9;
-    width: 30%;
+    width: 130px;
 }
 
 .sections {
-    padding: 0 10vw;
+    padding: 5vh 10vw;
+    
 }
-.sections:not(header, #home, footer) {
-    margin-bottom: 80px;
-}
-#menu {
-    z-index: 2;
-    position: fixed;
-    width: 100%;
+.sections:not(footer) {
+    min-height: 100vh;
     display: flex;
-    justify-content: space-between;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: #1E1D1D;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
-#menu div a {
-    margin-left: 20px;
-}
+
 #home {
+    background: fixed url(./images/rain.webp);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
-    height: 100vh;
 }
 #home p {
     font-size: 20px;
 }
-#about {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-#about > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 50px;
+
+#about div {
+    margin-top: 10px;
+    max-width: 500px;
 }
 
-
-#about-img img {
-    width: 300px;
-    max-width: 80vw;
-}
-
-#about-read {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-direction: column;
-    width: 300px;
-    max-width: 80vw;
-}
-#about-read p {
+#about div p {
     line-height: 1.3em;
     text-align: justify;
     margin-bottom: 20px;
 }
-#about blockquote  {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+#about div p strong {
+    font-size: 1.1em;
+    text-decoration: underline;
 }
+
+
 #skills {
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 13px;
+    background: fixed url(./images/rain.webp);
 }
 #skills > div {
     display: flex;
@@ -145,16 +122,24 @@ hr {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border: 1px solid white;
+    border: 1px solid #98bac0;
+    margin: 5px;
     padding: 40px 30px;
     width: 300px;
     max-width: 80vw;
+    background-color: #1E1D1D;
+    transition: all .5s;
+}
+.skill:hover {
+    z-index: 3;
+    transform: scale(1.05);
 }
 .skill h3, .skill h3 * {
     font-family: "Poppins", Sans-serif;
 }
 .skill span {
     position: relative;
+    z-index: 1;
 }
 .skill span::after {
     content: "";
@@ -172,12 +157,10 @@ hr {
     font-size: 0.8em;
 }
 .skill p::before, .skill p::after  {
-    display: block;
-    opacity: 0.3;
+    opacity: 0.4;
     color: white;
     display: block;
     margin-left: -25px;
-    font-weight: normal;
     font-size: 14px;
 }
 
@@ -190,42 +173,18 @@ hr {
     margin-top: 5px;
 }
 
-#projects {
-    position: relative;
-}
 #projects h2 {
     margin-bottom: 10px;
 }
 #projects > div {
-    overflow: auto;
+    width: 80vw;
     display: flex;
     gap: 10px;
     margin: 20px 0;
-    scroll-behavior: smooth;
+    overflow-x: auto; 
+    padding-bottom: 15px;  /* deixar barra de scroll mais pra baixo */
 }
-#projects > div::-webkit-scrollbar {
-    width: 0;
-}
-#previous-button, #next-button{
-    display: none;
-}
-#projects span {
-    position: relative;
-    color: #ffffff;
-    opacity: .5;
-    animation: mover 2s ease-in-out infinite;
-}
-@keyframes mover {
-    0% {
-        left: 0;
-    }
-    50% {
-        left: 10px;
-    }
-    100% {
-        left: 0;
-    }
-}
+
 .project {
     position: relative;
     left: 0;
@@ -240,7 +199,9 @@ hr {
     padding: 16px;
     border-radius: 10px;
     overflow: hidden;
+    
 }
+
 .project img {
     position: absolute;
     left: 50%;
@@ -274,7 +235,7 @@ hr {
     border-radius: 8px;
     transition: 0.1s;
 }
-.project-link:hover {
+.project-link:hover, li.verMais:hover {
     transform: scale(1.07);
 }
 
@@ -325,24 +286,5 @@ footer img {
 @media (min-width:400px){
     .project{
         width: 300px;
-    }
-}
-@media (min-width:768px) {
-    #projects span {
-        display: none;
-    }
-    #previous-button, #next-button {
-        display: block;
-        position: absolute;
-        top: 50%;
-        cursor: pointer;
-    }
-    #previous-button{
-        left:  calc(10vw - 70px);
-        transform: rotate(-135deg);
-    }
-    #next-button {
-        right: calc(10vw - 70px);
-        transform: rotate(45deg);
     }
 }
