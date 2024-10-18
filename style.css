@@ -271,6 +271,7 @@ footer {
 }
 footer img {
     height:35px;
+    z-index: 3;
 }
 #opacity {
     position: fixed;
